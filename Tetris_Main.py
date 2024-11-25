@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 from Tetris_Board import TetrisBoard as TB
 from Tetris_Board import Tetromino
 import Tetris_Board as T
@@ -26,6 +27,10 @@ def main():
     global size_x, size_y, linesheight, gamewidth
     pygame.init()
     pygame.display.set_caption("Tetris")
+    mixer.init()
+    mixer.music.load("Tetris.mp3")
+    mixer.music.set_volume(0.3)
+    mixer.music.play()
     screen = pygame.display.set_mode((size_x, size_y))
     clock = pygame.time.Clock()
     isRunning = True
@@ -78,6 +83,9 @@ def main():
                     T.lock_tetromino(board, current_tetromino)
                     if board.grid[3][0].isActive:
                         text = font.render("Game Over!",False,(255,0,0))
+                        mixer.music.load("GameOver.mp3")
+                        mixer.music.set_volume(1)
+                        mixer.music.play()
                         screen.blit(text, (size_x/3,size_y/2))
                         pygame.display.flip()
                         pygame.time.wait(10000)
