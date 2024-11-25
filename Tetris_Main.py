@@ -32,7 +32,7 @@ def main():
 
     board = TB(10, 20, linesheight, gamewidth)
     pieceNr = MyRandom.RandomRange(0,6)
-    current_tetromino = Tetromino(0, colors[pieceNr])
+    current_tetromino = Tetromino(pieceNr, colors[pieceNr])
 
     fall_time = 0
     fall_speed = 500
@@ -85,7 +85,7 @@ def main():
                     for i in range(4):
                         T.clear_lines(board)
                     pieceNr = MyRandom.RandomRange(0,6)
-                    current_tetromino = Tetromino(0, colors[pieceNr])
+                    current_tetromino = Tetromino(pieceNr, colors[pieceNr])
                 fall_time = 0
             
             screen.fill("black")
